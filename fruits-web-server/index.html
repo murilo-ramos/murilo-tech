@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Frutas</title>
+</head>
+<body>
+	<div id="fruits"></div>
+
+	<script type="text/javascript">
+		var xhttp = new XMLHttpRequest();
+
+		xhttp.onreadystatechange = function() {
+		  if (this.readyState == 4 && this.status == 200) {
+		  	let fruits = JSON.parse(this.responseText);
+		  	let text = "";
+
+		  	fruits.forEach(function(item) {
+		  		text += "<p>"
+		  		text += 'Fruta: ' + item.name +', Quantidade: ' + item.count;
+		  		text += "</p>"
+		  	})
+
+		    document.getElementById("fruits").innerHTML = text;
+		  }
+		};
+		
+		xhttp.open("GET", "fruits.json", true);
+		xhttp.send();
+	</script>
+</body>
+</html>
