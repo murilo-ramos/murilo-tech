@@ -8,7 +8,7 @@ namespace FileReader
         {
             var employeeRepository = new MySqlEmployeeRepository();
             var fileReader = new FileReader(employeeRepository);
-            fileReader.Read("/Users/murilo/Git/murilo-tech/FileReader/ArquivoDeExemplo/filereadersample.txt");
+            fileReader.Read("/Users/murilo-tech/filereadersample.txt");
         }
     }
 }

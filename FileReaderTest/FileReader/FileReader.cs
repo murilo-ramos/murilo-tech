@@ -40,13 +40,15 @@ namespace FileReader
                     
                     var fields = fileLine.Split(";");
 
-                    var employee = new Employee();
-                    employee.Id     = fields[0];
-                    employee.Name   = fields[1];
-                    employee.Gender = GetGender(fields[2]);
-                    employee.Phone  = fields[3];
-                    employee.HireDate   = ParseDate(fields[4]);
-                    employee.ImportDate = DateTime.Now;
+                    var employee = new Employee
+                    {
+                        Id     = fields[0],
+                        Name   = fields[1],
+                        Gender = GetGender(fields[2]),
+                        Phone  = fields[3],
+                        HireDate   = ParseDate(fields[4]),
+                        ImportDate = DateTime.Now
+                    };
 
                     employees.Add(employee);
                 }  
@@ -83,7 +85,8 @@ namespace FileReader
             employeeRepository.AddAll(employees);
         }
 
-        private string GetGender(string gender) {
+        private string GetGender(string gender)
+        {
             switch (gender)
             {
                 case "M":
@@ -97,7 +100,8 @@ namespace FileReader
             }
         }
 
-        private DateTime ParseDate(string date) {
+        private DateTime ParseDate(string date)
+        {
             return DateTime.ParseExact(date, DateFormat, System.Globalization.CultureInfo.InvariantCulture);
         }
     }
