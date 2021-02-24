@@ -29,12 +29,12 @@ public class GitHubRepositoryService {
         var result = new ArrayList<GitHubRepository>();
 
         try {
-            final Call<List<GitHubRepository>> request = gitHubRepositoriesClient.listRepositoriesFromUser(user);
-            Response<List<GitHubRepository>> response = request.execute();
+            var request = gitHubRepositoriesClient.listRepositoriesFromUser(user);
+            var response = request.execute();
+
             if (response.isSuccessful()) {
                 result.addAll(response.body());
             }
-
         } catch (IOException ex) {
             System.out.println("Erro ao realizar requisição: " + ex.getMessage());
         }
